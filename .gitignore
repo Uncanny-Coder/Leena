@@ -6,3 +6,4 @@
 # documentation: https://help.github.com/articles/ignoring-files/
 
 *.yml
+.shopify

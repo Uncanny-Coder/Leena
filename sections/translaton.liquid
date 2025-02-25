@@ -1,0 +1,88 @@
+{% form 'localization'
+  , id: "localization_form_tag"
+  , class: "dropup" %}
+  <div class="localeBtn">{{ 'globe.png' | asset_img_url: '60px' | img_tag }}</div>
+  <div class="dropup-content">
+    {% for locale in shop.published_locales %}
+      <a
+        href="#"
+        id="localeItem"
+        lang="{{ locale.iso_code }}">{{ locale.endonym_name }}</a>
+    {% endfor %}
+  </div>
+
+  <input
+    id="localeCode"
+    type="hidden"
+    name="locale_code"
+    value="{{ form.current_locale.iso_code }}">
+{% endform %}
+
+
+<style>
+  .dropup {
+    position: relative;
+    display: inline-block;
+  }
+
+  .localeBtn {
+    background-color: #3298DB;
+    color: #fff;
+    padding: 6px;
+    font-size: 20px;
+    position: fixed;
+    bottom: 23px;
+    right: 25px;
+    border-radius: 50%;
+    width: 70px;
+    height: 70px;
+    z-index: 10;
+    box-shadow: -1px 0 20px 0 #00000066;
+  }
+
+  .localeBtn img {
+    width: 60px;
+    height: 60px;
+    padding: 0;
+  }
+
+  .dropup-content {
+    display: none;
+    position: fixed;
+    bottom: 85px;
+    right: 25px;
+    min-width: 210px;
+    z-index: 10;
+    background-color: #f1f1f1;
+    box-shadow: -1px 0 20px 0 #00000066;
+  }
+
+  .dropup:hover .dropup-content {
+    display: block;
+  }
+
+  .dropup-content a {
+    color: #000;
+    font-size: 17px;
+    padding: 15px 10px;
+    display: block;
+    text-align: center;
+  }
+
+  #shopify-section-translation {
+    height: 0;
+  }
+</style>
+
+<script>
+  var localeItems = document.querySelectorAll("#localeItem");
+  if (localeItems.length > 0) {
+    localeItems.forEach(item => {
+      item.addEventListener("click", (event) => {
+        event.preventDefault();
+        document.getElementById("localeCode").value = item.getAttribute("lang");
+        document.getElementById("localization_form_tag").submit();
+      });
+    });
+  }
+</script>
