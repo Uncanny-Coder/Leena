@@ -22,7 +22,7 @@
     "featured-collection": {
       "type": "featured-collection",
       "settings": {
-        "featured_collection": "summer-collection",
+        "featured_collection": "frontpage",
         "title": "Featured Summer Collection"
       }
     }
