@@ -22,7 +22,7 @@
     "featured-collection": {
       "type": "featured-collection",
       "settings": {
-        "featured_collection": "frontpage",
+        "featured_collection": "hydrogen",
         "title": "Featured Summer Collection"
       }
     }
